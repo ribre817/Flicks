@@ -17,8 +17,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     var movies: [NSDictionary]?
     var endpoint: String!
     
+    let backgroundView = UIView()
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backgroundView.backgroundColor = UIColor.lightGrayColor()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
@@ -75,6 +80,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = TableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
+        cell.selectedBackgroundView = backgroundView
         
         let movie = movies![indexPath.row]
         let title = movie["title"] as! String
@@ -134,7 +140,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         let cell = sender as! UITableViewCell
         let indexPath = TableView.indexPathForCell(cell)
         let movie = movies![indexPath!.row]
