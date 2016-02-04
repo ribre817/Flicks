@@ -100,6 +100,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 1. I did not purchase the icons, so the bottom left corner has tiny text crediting the author.
 2. Was unable to find out the deselection process using a navigation controller. 
+3. I chose to have the overviewText label over the poster rather than underneath it because I thought it was more visually appealing.
 
 ## License
 
